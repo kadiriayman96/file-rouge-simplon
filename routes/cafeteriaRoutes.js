@@ -7,7 +7,7 @@ import {
 } from "../controllers/cafeteriaController.js";
 import auth from "../middlewares/auth.js";
 import role from "../middlewares/role.js";
-import { validateCafeteria } from "../middlewares/validate.js"; // Import validation for cafeteria
+import { validateCafeteria } from "../middlewares/validate.js";
 
 const router = express.Router();
 

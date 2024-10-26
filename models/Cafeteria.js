@@ -4,8 +4,8 @@ import mongoose from "mongoose";
 const cafeteriaSchema = new mongoose.Schema({
   name: { type: String, required: true },
   location: { type: String, required: true },
-  manager: { type: String, required: true }, // Manager is required
-  description: { type: String, required: true }, // Description is required
+  manager: { type: String, required: true },
+  description: { type: String, required: true },
   menus: [{ type: mongoose.Schema.Types.ObjectId, ref: "Menu" }],
 });
 

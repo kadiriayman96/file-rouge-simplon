@@ -3,9 +3,9 @@ import Joi from "joi";
 // Registration validation schema
 const registrationSchema = Joi.object({
   username: Joi.string().min(3).max(30).required(),
-  email: Joi.string().email().required(), // Validate email format
+  email: Joi.string().email().required(),
   password: Joi.string().min(6).required(),
-  role: Joi.string().valid("admin", "user").optional(), // role is optional, defaults to "user"
+  role: Joi.string().valid("admin", "user").optional(),
 });
 
 // Menu validation schema
@@ -13,15 +13,15 @@ const menuSchema = Joi.object({
   name: Joi.string().min(3).max(50).required(),
   description: Joi.string().min(10).required(),
   price: Joi.number().positive().required(),
-  cafeteria: Joi.string().required(), // Assuming cafeteria ID is a string
+  cafeteria: Joi.string().required(),
 });
 
 /// Cafeteria validation schema
 const cafeteriaSchema = Joi.object({
   name: Joi.string().min(3).max(50).required(),
   location: Joi.string().min(10).required(),
-  manager: Joi.string().required(), // Manager is required
-  description: Joi.string().required(), // Description is required
+  manager: Joi.string().required(),
+  description: Joi.string().required(),
 });
 
 // Middleware for validating registration data
@@ -30,7 +30,7 @@ export const validateRegistration = (req, res, next) => {
   if (error) {
     return res.status(400).json({ error: error.details[0].message });
   }
-  next(); // Pass control to the next middleware/controller
+  next();
 };
 
 // Middleware for validating menu data
@@ -39,7 +39,7 @@ export const validateMenu = (req, res, next) => {
   if (error) {
     return res.status(400).json({ error: error.details[0].message });
   }
-  next(); // Pass control to the next middleware/controller
+  next();
 };
 
 // Middleware for validating cafeteria data
@@ -48,5 +48,5 @@ export const validateCafeteria = (req, res, next) => {
   if (error) {
     return res.status(400).json({ error: error.details[0].message });
   }
-  next(); // Pass control to the next middleware/controller
+  next();
 };
